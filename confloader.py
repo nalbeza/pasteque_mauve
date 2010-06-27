@@ -10,4 +10,8 @@ def loadconf(conf):
             sp = sp.split('=')
             if len(sp)==2: conf[sp[0].strip()]=sp[1].strip()
         path.close()
-
+    else:
+        conf["pidfile"] = "broxy.pid"
+        conf["port"] = "1337"
+        conf["maxconnection"] = 20
+        conf["logfile"] = "broxy.log"

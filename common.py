@@ -1,5 +1,6 @@
 import os
 import signal
+import time
 
 def exists(path):
    try:
@@ -21,3 +22,7 @@ def delete(path):
       return True
    except:
       return False
+
+def log(conf, msg):
+   open(conf['logfile'], "aw").write(time.strftime('%d/%m/%y %H:%M:%S : ',time.localtime()) + msg + "\n")
+      
