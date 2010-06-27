@@ -1,17 +1,15 @@
-import common
-
+#!/usr/bin/python
+import common, array
 
 def loadconf(conf):
     if (common.exists("broxy.conf")):
-        path = open('broxy.conf','rb')
+        path = open('broxy.conf','r')
         lignes = path.readlines()
-        for lig in lignes: 
+        for lig in lignes:
             sp = lig.split('#')[0]
             sp = sp.split('=')
-            if len(sp)==2: conf[sp[0].strip()]=sp[1].strip()
+            if len(sp[1]) > 1: conf[sp[0]] = sp[1].strip()
         path.close()
-    else:
-        conf["pidfile"] = "broxy.pid"
-        conf["port"] = "1337"
-        conf["maxconnection"] = 20
-        conf["logfile"] = "broxy.log"
+
+conf = {"pidfile":"broxy.pid", "port":"4242", "maxconnection":20, "logfile":"broxy.log"}
+loadconf(conf)
