@@ -12,6 +12,9 @@ def main():
     if (len(sys.argv) == 2 and sys.argv[1] == "start"):
         start.start(conf)
     elif (len(sys.argv) == 2 and sys.argv[1] == "restart"):
+        if (stop.stop(conf) == True):
+            common.log(conf, "Daemon stopped")
+            print "Daemon stopped"
         start.start(conf)    
     elif (len(sys.argv) == 2 and sys.argv[1] == "stop"):
         if (stop.stop(conf) == True):
